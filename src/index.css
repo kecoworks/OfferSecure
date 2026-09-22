@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border-color: #E2E8F0;
+  --text-main: #0F172A;
+  --text-primary: #0F172A;
+  --text-muted: #475569;
+  --accent-blue: #2563EB;
+  --accent-blue-hover: #1D4ED8;
+  --risk-high-bg: #DC2626;
+  --risk-high-text: #FFFFFF;
+  --risk-mod-bg: #F59E0B;
+  --risk-mod-text: #0F172A;
+  --risk-low-bg: #16A34A;
+  --risk-low-text: #FFFFFF;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  --bg-primary: #0F172A;
+  --bg-card: #1E293B;
+  --border-color: #334155;
+  --text-main: #F8FAFC;
+  --text-primary: #F8FAFC;
+  --text-muted: #94A3B8;
+  --accent-blue: #3B82F6;
+  --accent-blue-hover: #60A5FA;
+}
+
+html, body, #root, #offershield-app {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix Header Brand Title visibility & high contrast */
+.navbar-logo-text,
+.brand-title {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+}
+
+body.light-mode .navbar-logo-text,
+body.light-mode .brand-title,
+.light .navbar-logo-text,
+.light .brand-title {
+  color: #0f172a !important; /* Dark Slate in Light Mode */
+}
+
+body.dark-mode .navbar-logo-text,
+body.dark-mode .brand-title,
+.dark .navbar-logo-text,
+.dark .brand-title {
+  color: #f8fafc !important; /* Pure White in Dark Mode */
+}
+
+/* Fix Claimed Company text contrast in light mode */
+body.light-mode .claimed-company-value,
+body.light-mode [data-field="claimed-company"],
+.claimed-company-value,
+[data-field="claimed-company"] {
+  color: #0f172a !important; /* High contrast dark slate */
+  font-weight: 600 !important;
+}
+
+body.dark-mode .claimed-company-value,
+body.dark-mode [data-field="claimed-company"],
+.dark .claimed-company-value,
+.dark [data-field="claimed-company"] {
+  color: #e2e8f0 !important;
+}
+
+/* ==========================================
+   LIGHT MODE CONTRAST & VISIBILITY OVERRIDES
+   ========================================== */
+
+/* 1. Detected Red Flags Box (Extension & Web Dashboard) */
+.detected-red-flags-item,
+.red-flag-card,
+[class*="red-flag"] {
+  background-color: #f8fafc !important; /* Slate 50 */
+  border: 1px solid #cbd5e1 !important; /* Slate 300 */
+}
+
+/* Red Flag Text */
+.detected-red-flags-item p,
+.detected-red-flags-item span,
+.red-flag-card span,
+.red-flag-card p {
+  color: #0f172a !important; /* Slate 900 - High Contrast Dark Slate */
+  font-weight: 500 !important;
+}
+
+/* Critical / Warning Badges */
+.badge-critical,
+.badge-red {
+  background-color: #fef2f2 !important; /* Soft Red Tint */
+  color: #991b1b !important; /* Deep Crimson Text */
+  border: 1px solid #fecaca !important;
+  font-weight: 700 !important;
+}
+
+/* 2. Registration & Security Telemetry / Age Assessment */
+.telemetry-card,
+.security-telemetry-container {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Fix for "CRITICAL (<30 days old)" & "12 days old" Text */
+.age-assessment-text,
+.telemetry-card .critical-text,
+.telemetry-card span,
+.telemetry-card label {
+  color: #1e293b !important; /* Slate 800 */
+  font-weight: 600 !important;
+}
+
+/* Highlight Badge for Domain Age */
+.domain-age-badge {
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important; /* Bold Rose/Red */
+  border: 1px solid #fecdd3 !important;
+  font-weight: 700 !important;
+}
+
+/* 3. Global Light-Theme Muted Text Guardrail */
+body.light-mode .text-muted,
+body.light-mode .text-secondary,
+body.light-mode label {
+  color: #475569 !important; /* Slate 600 instead of faint gray */
+}
+
+/* Dark mode theme safety overrides */
+.dark .detected-red-flags-item,
+.dark .red-flag-card,
+.dark [class*="red-flag"] {
+  background-color: #090d16 !important;
+  border-color: #1e293b !important;
+}
+
+.dark .detected-red-flags-item p,
+.dark .detected-red-flags-item span,
+.dark .red-flag-card span,
+.dark .red-flag-card p {
+  color: #e2e8f0 !important;
+}
+
+.dark .telemetry-card,
+.dark .security-telemetry-container {
+  background-color: rgba(2, 6, 23, 0.6) !important;
+  border-color: #1e293b !important;
+}
+
+.dark .age-assessment-text,
+.dark .telemetry-card .critical-text,
+.dark .telemetry-card span,
+.dark .telemetry-card label {
+  color: #cbd5e1 !important;
+}
+
+/* Dark Mode Overrides for Critical Badges and Domain Age */
+body.dark-mode .badge-critical,
+body.dark-mode .badge-red,
+body.dark-mode [class*="badge-critical"],
+.dark .badge-critical,
+.dark .badge-red,
+.dark [class*="badge-critical"] {
+  background-color: #450a0a !important; /* Deep dark red background */
+  color: #fca5a5 !important;            /* High-contrast light red text */
+  border: 1px solid #991b1b !important;
+  font-weight: 700 !important;
+}
+
+body.dark-mode .domain-age-badge,
+body.dark-mode [class*="domain-age"],
+.dark .domain-age-badge,
+.dark [class*="domain-age"] {
+  background-color: #881337 !important; /* Deep rose background */
+  color: #fecdd3 !important;            /* Soft light pink readable text */
+  border: 1px solid #9f1239 !important;
+  font-weight: 700 !important;
+}
+
+code, pre, .font-mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer utilities {
+  @media print {
+    body {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+    #header-nav,
+    #scanner-input-container,
+    #floating-lang-trigger,
+    #langDropdown,
+    #app-footer,
+    #engine-telemetry-banner,
+    button {
+      display: none !important;
+    }
+    #cybercrime-dossier-modal-backdrop {
+      position: static !important;
+      background: none !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+    #cybercrime-dossier-card {
+      max-height: none !important;
+      overflow: visible !important;
+      box-shadow: none !important;
+      border: none !important;
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    #printable-forensic-sheet {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #111827 !important;
+      box-shadow: none !important;
+    }
+    * {
+      color-adjust: exact !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+}

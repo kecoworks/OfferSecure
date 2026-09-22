@@ -1,0 +1,8 @@
+{
+  "name": "Remix OfferShield.io",
+  "description": "Single-page security scanner and Chrome extension companion that protects job seekers and renters from fake offers, phishing, and deposit scams via a dynamic Scam Threat Index (0–100%).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
